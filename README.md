@@ -2,7 +2,7 @@
 
 ### Background and Overview
 
-Gravity Rush is an endless side-scrolling video game inspired by Gravity Guy, where players have the ability to reverse the polarity of the world to maniupulate their surroundings to survive. The goal of the game is to accrue as many points as possible before dying. As time progresses, the side-scrolling velocity will increase making it more difficult to survive.
+Gravity Rush is an endless side-scrolling video game inspired by Gravity Guy, where players have the ability to reverse the polarity of the world to manipulate their surroundings to survive. The goal of the game is to accrue as many points as possible before dying. As time progresses, the side-scrolling velocity will increase making it more difficult to survive.
 
 ### Functionality & MVP  
 
@@ -11,7 +11,7 @@ In Gravity Rush, users will be able to:
 - [ ] Toggle a key input to reverse the current polarity
 - [ ] Jump to avoid obstacles
 - [ ] View current distance travelled / points yielded
-- [ ] Start, pause, restart, and reset the game
+- [ ] Start, pause, and restart the game
 
 
 In addition, this project will include:
@@ -25,7 +25,7 @@ This app will consist of a single screen with the simulation canvas, playback co
 
 The simulation canvas will include a dropdown for selecting the initial color of the creation object. Users will click and drag to create objects of a certain size and vector angle.
 
-Playback controls along the bottom will include Start, Pause, Restart and Reset buttons.
+Playback controls along the bottom will include Start, Pause, and Restart buttons.
 
 On the top left, there will be a speaker phone to toggle the music/sfx on and off.
 
@@ -71,5 +71,5 @@ In addition to the webpack entry file, there will be four scripts involved in th
 
 **Day 4**: Install the controls for the user to interact with the game. Style the frontend, making it polished and professional. Goals for the day:
 
-- [x] Create controls for start, stop, and restart
-- [x] Have a styled `Canvas`, nice looking controls and title
+- [ ] Create controls for start, stop, and restart
+- [ ] Have a styled `Canvas`, nice looking controls and title
