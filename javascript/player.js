@@ -18,11 +18,14 @@ class Player {
       this.y = height;
       this.gravity = 0;
     }
+
+    if (this.y < 0) {
+      this.y = 0;
+      this.gravity = 0;
+    }
   }
 
-  keyPressed() {
-    if (keyCode === 32) {
-      console.log("SPACE");
-    }
+  reversePolarity() {
+    this.gravity = -(this.gravity);
   }
 }

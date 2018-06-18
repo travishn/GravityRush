@@ -10,3 +10,7 @@ function draw() {
 	player.update();
 	player.show();
 }
+
+function keyPressed() {
+	if (key === ' ') player.reversePolarity();
+}
