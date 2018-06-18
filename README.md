@@ -23,8 +23,6 @@ In addition, this project will include:
 
 This app will consist of a single screen with the simulation canvas, playback controls, and nav links to the Github, my LinkedIn, and the About and Details modals.  
 
-The simulation canvas will include a dropdown for selecting the initial color of the creation object. Users will click and drag to create objects of a certain size and vector angle.
-
 Playback controls along the bottom will include Start, Pause, and Restart buttons.
 
 On the top left, there will be a speaker phone to toggle the music/sfx on and off.
