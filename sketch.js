@@ -12,7 +12,7 @@ function draw() {
 	player.update();
 	player.show();
 
-	// if (frameCount % 100 === 0) terrain.push(new Terrain());
+	if (frameCount % 150 === 0) terrain.push(new Terrain());
 
 	for (const ground of terrain) {
 		ground.show();
