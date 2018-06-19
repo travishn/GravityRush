@@ -22,17 +22,16 @@ class Terrain {
 
   hits(player) {
     // console.log(this.getDistance(this.x, this.y, player.x, player.y) < ((this.y/2) + (32/2)));
+
     // console.log((player.y === this.terrainHeight));
-    // console.log((this.x === 100));
-    console.log(this.x);
+    // console.log((this.x < 100));
+
     // if (player.y-18 === this.y && this.x <= 0) return true;
 
-    // console.log((player.x + player.playerWidth >= this.x &&
-    //   player.x <= this.x + this.terrainWidth &&
-    //   player.y + player.playerHeight >= this.y &&
-    //   player.y <= this.y + this.terrainHeight));
-
-    return false;
+    return ((player.x + player.playerWidth >= this.x &&
+      player.x <= this.x + this.terrainWidth &&
+      player.y + player.playerHeight >= this.y &&
+      player.y <= this.y + this.terrainHeight));
   }
 
   getDistance(x1, y1, x2, y2) {

@@ -6,10 +6,10 @@ class Player {
     this.playerWidth = 32;
     this.gravity = 0.4;
     this.velocity = 0;
-    this.liftForce = 16;
+    this.liftForce = 12;
     this.midJump = false;
-    this.topLimit = (height/9);
-    // this.topLimit;
+    // this.topLimit = (height/9);
+    this.topLimit = 0;
     this.bottomLimit = (height - (height/9));
   }
 
