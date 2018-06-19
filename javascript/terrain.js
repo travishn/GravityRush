@@ -1,15 +1,17 @@
 class Terrain {
-  constructor() {
+  constructor(flipped) {
     this.y = 0;
     this.x = width + 100;
     this.terrainHeight = height/9;
     this.terrainWidth = random(300, 700);
     this.speed = 7;
+    this.flipped = flipped;
   }
 
   show() {
     fill(255);
-    rect(this.x, this.y, this.terrainWidth, this.terrainHeight);
+    if (this.flipped) rect(this.x, this.y, this.terrainWidth, this.terrainHeight);
+    else rect(this.x, height-this.terrainHeight, this.terrainWidth, this.terrainHeight);
   }
 
   update() {
@@ -21,23 +23,28 @@ class Terrain {
   }
 
   hits(player) {
-    // console.log(this.getDistance(this.x, this.y, player.x, player.y) < ((this.y/2) + (32/2)));
 
-    // console.log((player.y === this.terrainHeight));
-    // console.log((this.x < 100));
+    // console.log((player.x + player.playerWidth >= this.x &&
+    //   player.x <= this.x + this.terrainWidth &&
+    //   player.y + player.playerHeight >= (height-this.terrainHeight)));
 
-    // if (player.y-18 === this.y && this.x <= 0) return true;
+    // console.log(player.x <= this.x + this.terrainWidth &&
+    //   player.y + player.playerHeight >= this.y && 
+    //   player.y <= this.y + this.terrainHeight); 
 
-    return ((player.x + player.playerWidth >= this.x &&
+    if (this.flipped) return ((player.x + player.playerWidth >= this.x &&
       player.x <= this.x + this.terrainWidth &&
       player.y + player.playerHeight >= this.y &&
       player.y <= this.y + this.terrainHeight));
-  }
 
-  getDistance(x1, y1, x2, y2) {
-    let xDistance = x2 - x1;
-    let yDistance = y2 - y1;
+    else {
+      return (player.x + player.playerWidth > this.x && player.x < this.x + this.terrainWidth);
+    }
 
-    return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+    // else return ((player.x + player.playerWidth >= this.x &&
+    //   player.x <= this.x + this.terrainWidth &&
+    //   player.y <= this.y + this.terrainHeight &&
+    //   player.y + player.playerHeight >= this.y));
+
   }
 }

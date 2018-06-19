@@ -10,7 +10,7 @@ class Player {
     this.midJump = false;
     // this.topLimit = (height/9);
     this.topLimit = 0;
-    this.bottomLimit = (height - (height/9));
+    this.bottomLimit = (height - this.playerHeight - (height/9));
   }
 
 
@@ -23,7 +23,7 @@ class Player {
     this.velocity += this.gravity;
     this.y += this.velocity;
 
-    if (this.y > this.bottomLimit) {
+    if (this.y >= this.bottomLimit) {
       this.y = this.bottomLimit;
       // this.gravity = 0;
     }
