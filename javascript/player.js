@@ -2,18 +2,21 @@ class Player {
   constructor() {
     this.y = height/2;
     this.x = 100;
+    this.playerHeight = 32;
+    this.playerWidth = 32;
     this.gravity = 0.4;
     this.velocity = 0;
     this.liftForce = 16;
     this.midJump = false;
-    this.topLimit = (height/9) + 18;
+    this.topLimit = (height/9);
+    // this.topLimit;
     this.bottomLimit = (height - (height/9));
   }
 
 
   show() {
     fill(255);
-    let obj = ellipse(this.x, this.y, 32, 32);
+    let obj = rect(this.x, this.y, this.playerWidth, this.playerHeight);
   }
 
   update() {

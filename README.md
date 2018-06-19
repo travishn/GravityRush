@@ -27,6 +27,8 @@ Playback controls along the bottom will include Start, Pause, and Restart button
 
 On the top left, there will be a speaker phone to toggle the music/sfx on and off.
 
+![index](https://res.cloudinary.com/emanon/image/upload/v1529389736/wireframe.png)
+
 ### Architecture and Technologies
 
 This project will be implemented with the following technologies:
