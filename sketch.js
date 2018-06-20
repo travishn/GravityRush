@@ -8,20 +8,23 @@ let option;
 let playerImg;
 let playerImg2;
 let bgImg;
+let terrainImg;
 let isOver = false;
 
 function preload() {
 	bgImg = loadImage('graphics/retro_background.jpg');
 	playerImg = loadImage('graphics/player_sprite2.png');
 	playerImg2 = loadImage('graphics/player_upside_down.png');
+	terrainImg = loadImage('graphics/snowMid.png');
+	terrainImg2 = loadImage('graphics/snowMid2.png');
 }
 
 function setup() {
-	createCanvas(1200, 800);
+	createCanvas(1080, 700);
 	player = new Player();
 	let firstTerrain = new Terrain(false);
-	firstTerrain.x = 500;
-	firstTerrain.terrainWidth = 1000; 
+	firstTerrain.x = 400;
+	firstTerrain.terrainWidth = 1100; 
 	terrain.push(firstTerrain);
 }
 
@@ -48,7 +51,7 @@ function draw() {
 			player.bottomLimit = height - (terrain[i].terrainHeight) - player.playerHeight;
 		} else {
 			player.topLimit = 0;
-			player.bottomLimit = height - player.playerHeight; 
+			player.bottomLimit = height + this.playerHeight;
 		}
 
 		if (terrain[i].offScreen()) terrain.shift();

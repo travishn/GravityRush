@@ -2,14 +2,14 @@ class Player {
   constructor() {
     this.y = height/2;
     this.x = 100;
-    this.playerHeight = 75;
-    this.playerWidth = 50;
+    this.playerHeight = 65;
+    this.playerWidth = 40;
     this.gravity = 0.4;
     this.velocity = 0;
     this.liftForce = 12;
     this.midJump = false;
     this.topLimit = 0;
-    this.bottomLimit = (height - this.playerHeight);
+    this.bottomLimit = height + this.playerHeight;
   }
 
 
@@ -52,6 +52,7 @@ class Player {
   }
 
   isDead() {
-    return (player.y === 0 || player.y === height - player.playerHeight);
+    // return (player.y === 0 || player.y === height - player.playerHeight);
+    return (player.y === 0 || player.y > height - player.playerHeight);
   }
 }

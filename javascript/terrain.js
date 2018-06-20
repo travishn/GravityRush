@@ -10,8 +10,8 @@ class Terrain {
 
   show() {
     fill(255); 
-    if (this.flipped) rect(this.x, this.y, this.terrainWidth, this.terrainHeight);
-    else rect(this.x, height-this.terrainHeight, this.terrainWidth, this.terrainHeight);
+    if (this.flipped) return image(terrainImg2, this.x, this.y, this.terrainWidth, this.terrainHeight);
+    else return image(terrainImg, this.x, height-this.terrainHeight, this.terrainWidth, this.terrainHeight);
   }
 
   update() {
