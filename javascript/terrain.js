@@ -4,7 +4,7 @@ class Terrain {
     this.x = width;
     this.terrainHeight = random(height/7, height/4);
     this.terrainWidth = random(250, 700);
-    this.speed = 12;
+    this.speed = 13;
     this.flipped = flipped;
   }
 

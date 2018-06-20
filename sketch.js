@@ -69,14 +69,22 @@ function draw() {
 		terrain.forEach(ground => (ground.speed = 0));
 		textSize(64);
 		textAlign(CENTER, CENTER);
-		text('GAMEOVER', width / 2, height / 2);
+		text('GAMEOVER', width/2, height/2);
+		textSize(30);
+		text('Press "R" to restart', width/2, height/1.75);
 		isOver = true;
 	}
+}
 
-
+function resetGame() {
+	terrain = [];
+	isOver = false;
+	bgX = 0;
+	setup();
 }
 
 function keyPressed() {
 	if (keyCode === 71) player.reversePolarity();
 	if (key === ' ') player.jump();
+	if (keyCode === 82) resetGame();
 }

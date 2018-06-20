@@ -6,7 +6,7 @@ class Player {
     this.playerWidth = 40;
     this.gravity = 0.4;
     this.velocity = 0;
-    this.liftForce = 12;
+    this.liftForce = 10;
     this.midJump = false;
     this.topLimit = 0;
     this.bottomLimit = height + this.playerHeight;
@@ -25,8 +25,7 @@ class Player {
     }
 
   update() {
-
-    if (frameCount % 5 === 0) {
+    if (frameCount % 8 === 0) {
       this.strafing = !this.strafing;
     }
 
@@ -63,7 +62,6 @@ class Player {
   }
 
   isDead() {
-    // return (player.y === 0 || player.y === height - player.playerHeight);
     return (player.y < 0 || player.y > height - player.playerHeight);
   }
 }
