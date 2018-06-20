@@ -1,10 +1,10 @@
 class Terrain {
   constructor(flipped) {
     this.y = 0;
-    this.x = width + 100;
-    this.terrainHeight = height/9;
-    this.terrainWidth = random(300, 700);
-    this.speed = 7;
+    this.x = width;
+    this.terrainHeight = random(height/7, height/4);
+    this.terrainWidth = random(250, 700);
+    this.speed = 12;
     this.flipped = flipped;
   }
 
@@ -23,28 +23,16 @@ class Terrain {
   }
 
   hits(player) {
-
-    // console.log((player.x + player.playerWidth >= this.x &&
-    //   player.x <= this.x + this.terrainWidth &&
-    //   player.y + player.playerHeight >= (height-this.terrainHeight)));
-
-    // console.log(player.x <= this.x + this.terrainWidth &&
-    //   player.y + player.playerHeight >= this.y && 
-    //   player.y <= this.y + this.terrainHeight); 
-
     if (this.flipped) return ((player.x + player.playerWidth >= this.x &&
       player.x <= this.x + this.terrainWidth &&
       player.y + player.playerHeight >= this.y &&
       player.y <= this.y + this.terrainHeight));
 
     else {
-      return (player.x + player.playerWidth > this.x && player.x < this.x + this.terrainWidth);
+      return (player.x + player.playerWidth > this.x && 
+        player.x < this.x + this.terrainWidth &&
+        player.y >= height - player.playerHeight - this.terrainHeight) &&
+        player.y <= height;
     }
-
-    // else return ((player.x + player.playerWidth >= this.x &&
-    //   player.x <= this.x + this.terrainWidth &&
-    //   player.y <= this.y + this.terrainHeight &&
-    //   player.y + player.playerHeight >= this.y));
-
   }
 }

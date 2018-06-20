@@ -8,9 +8,8 @@ class Player {
     this.velocity = 0;
     this.liftForce = 12;
     this.midJump = false;
-    // this.topLimit = (height/9);
     this.topLimit = 0;
-    this.bottomLimit = (height - this.playerHeight - (height/9));
+    this.bottomLimit = (height - this.playerHeight);
   }
 
 
@@ -25,12 +24,10 @@ class Player {
 
     if (this.y >= this.bottomLimit) {
       this.y = this.bottomLimit;
-      // this.gravity = 0;
     }
 
     if (this.y < this.topLimit) {
       this.y = this.topLimit;
-      // this.gravity = 0;
     }
   }
 
@@ -52,5 +49,9 @@ class Player {
     }
 
     this.midJump = false;
+  }
+
+  isDead() {
+    return (player.y === 0 || player.y === height - player.playerHeight);
   }
 }
