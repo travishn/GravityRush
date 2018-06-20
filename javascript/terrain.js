@@ -9,7 +9,7 @@ class Terrain {
   }
 
   show() {
-    fill(255);
+    fill(255); 
     if (this.flipped) rect(this.x, this.y, this.terrainWidth, this.terrainHeight);
     else rect(this.x, height-this.terrainHeight, this.terrainWidth, this.terrainHeight);
   }

@@ -6,11 +6,14 @@ const parallax = 0.8;
 let options = [true, false];
 let option;
 let playerImg;
+let playerImg2;
 let bgImg;
+let isOver = false;
 
 function preload() {
 	bgImg = loadImage('graphics/retro_background.jpg');
-	playerImg = loadImage('graphics/player_sprite.png');
+	playerImg = loadImage('graphics/player_sprite2.png');
+	playerImg2 = loadImage('graphics/player_upside_down.png');
 }
 
 function setup() {
@@ -52,18 +55,17 @@ function draw() {
 	}
 
 	option = options[Math.floor(Math.random()*options.length)];
-	// if (frameCount % 100 === 0) terrain.push(new Terrain(!terrain[terrain.length-1].flipped));
-	if (!player.isDead() && frameCount % 65 === 0) terrain.push(new Terrain(option));
+	if (!isOver && frameCount % 65 === 0) terrain.push(new Terrain(option));
 
-	image(playerImg, player.x, player.y, player.playerWidth, player.playerHeight);
 	player.update();
 	player.show();
+
 	if (player.isDead()) {
 		terrain.forEach(ground => (ground.speed = 0));
 		textSize(64);
 		textAlign(CENTER, CENTER);
 		text('GAMEOVER', width / 2, height / 2);
-		textAlign(LEFT, BASELINE);
+		isOver = true;
 	}
 
 

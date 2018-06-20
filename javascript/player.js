@@ -2,8 +2,8 @@ class Player {
   constructor() {
     this.y = height/2;
     this.x = 100;
-    this.playerHeight = 32;
-    this.playerWidth = 32;
+    this.playerHeight = 75;
+    this.playerWidth = 50;
     this.gravity = 0.4;
     this.velocity = 0;
     this.liftForce = 12;
@@ -13,9 +13,9 @@ class Player {
   }
 
 
-  show() {
-    fill(255);
-    let obj = rect(this.x, this.y, this.playerWidth, this.playerHeight);
+  show() { 
+    if (this.gravity > 0) return image(playerImg, this.x, this.y, this.playerWidth, this.playerHeight);
+    else return image(playerImg2, this.x, this.y, this.playerWidth, this.playerHeight);
   }
 
   update() {
