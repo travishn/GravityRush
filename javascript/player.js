@@ -10,15 +10,26 @@ class Player {
     this.midJump = false;
     this.topLimit = 0;
     this.bottomLimit = height + this.playerHeight;
+    this.strafing = false;
   }
 
 
   show() { 
-    if (this.gravity > 0) return image(playerImg, this.x, this.y, this.playerWidth, this.playerHeight);
-    else return image(playerImg2, this.x, this.y, this.playerWidth, this.playerHeight);
-  }
+    if (this.gravity > 0) {
+      if (this.strafing === true) return image(playerImg2, this.x, this.y, this.playerWidth, this.playerHeight);
+      else return image(playerImg, this.x, this.y, this.playerWidth, this.playerHeight);
+    } else {
+        if (this.strafing === true) return image(playerImg3, this.x, this.y, this.playerWidth, this.playerHeight);
+        else return image(playerImg4, this.x, this.y, this.playerWidth, this.playerHeight);
+      }
+    }
 
   update() {
+
+    if (frameCount % 5 === 0) {
+      this.strafing = !this.strafing;
+    }
+
     this.velocity += this.gravity;
     this.y += this.velocity;
 
@@ -53,6 +64,6 @@ class Player {
 
   isDead() {
     // return (player.y === 0 || player.y === height - player.playerHeight);
-    return (player.y === 0 || player.y > height - player.playerHeight);
+    return (player.y < 0 || player.y > height - player.playerHeight);
   }
 }

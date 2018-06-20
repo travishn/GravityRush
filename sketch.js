@@ -13,10 +13,12 @@ let isOver = false;
 
 function preload() {
 	bgImg = loadImage('graphics/retro_background.jpg');
-	playerImg = loadImage('graphics/player_sprite2.png');
-	playerImg2 = loadImage('graphics/player_upside_down.png');
-	terrainImg = loadImage('graphics/snowMid.png');
-	terrainImg2 = loadImage('graphics/snowMid2.png');
+	playerImg = loadImage('graphics/player_walk.png');
+	playerImg2 = loadImage('graphics/player_walk2.png');
+	playerImg3 = loadImage('graphics/player_walk3.png');
+	playerImg4 = loadImage('graphics/player_walk4.png');
+	terrainImg = loadImage('graphics/grassMid.png');
+	terrainImg2 = loadImage('graphics/grassMid2.png');
 }
 
 function setup() {
@@ -50,7 +52,7 @@ function draw() {
 		} else if (terrain[i].hits(player) && terrain[i].flipped === false) {
 			player.bottomLimit = height - (terrain[i].terrainHeight) - player.playerHeight;
 		} else {
-			player.topLimit = 0;
+			player.topLimit = -100;
 			player.bottomLimit = height + this.playerHeight;
 		}
 
