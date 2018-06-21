@@ -36,12 +36,12 @@ function setup() {
 	firstTerrain.terrainWidth = 1100; 
 	terrain.push(firstTerrain);
 	song.jump(0);
-	song.setVolume(0.05);
+	song.setVolume(0.5);
 }
 
 function draw() {
 	background(0);
-	// image(bgImg, bgX, 0, bgImg.width, height);
+	image(bgImg, bgX, 0, bgImg.width, height);
 	bgX -= terrain[terrain.length-1].speed * 0.8;
 
 	if (bgX <= -bgImg.width + width) {
@@ -97,13 +97,13 @@ function keyPressed() {
 	if (keyCode === 71) {
 		player.reversePolarity();
 		reverse.play();
-		reverse.setVolume(0.05);
+		reverse.setVolume(0.4);
 	}
 
 	if (key === ' ') {
 		player.jump();
 		jump.play();
-		jump.setVolume(0.05);
+		jump.setVolume(0.3);
 	}
 
 	if (keyCode === 82) resetGame();
