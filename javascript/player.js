@@ -11,6 +11,7 @@ class Player {
     this.topLimit = 0;
     this.bottomLimit = height + this.playerHeight;
     this.strafing = false;
+    this.score = 0;
   }
 
 
@@ -65,5 +66,18 @@ class Player {
     // if (terrain.flipped) return player.y < terrain.terrainHeight;
     // return (player.y + player.playerHeight) > height - terrain.terrainHeight + 20;
     return (player.y < 0 || player.y > height - player.playerHeight);
+  }
+
+  showScore() {
+    if (frameCount % 2 === 0) this.score += 1;
+    textSize(20);
+    text('Score:', width-115, 50);
+    text(this.score, width-50, 50);
+  }
+
+  showFinalScore() {
+    textSize(20);
+    text('Score:', width - 115, 50);
+    text(this.score, width - 50, 50);
   }
 }

@@ -1,5 +1,5 @@
 let player;
-let paused = false;
+let firstGame = false;
 let isOver = false;
 let bgX = 0;
 let terrain = [];
@@ -31,10 +31,10 @@ function preload() {
 // CREDIT TO EFFECTS GRINDER FOR SFX
 function setup() {
 	cnv = createCanvas(1080, 720);
+	centerCanvas();
 	resetGame();
 	startBtn = createButton('Start Game');
 	startBtn.mousePressed(resetGame);
-
 }
 
 function windowResized() {
@@ -62,19 +62,14 @@ function draw() {
 	for (let i = terrain.length - 1; i >= 0; i--) {
 		terrain[i].show();
 		terrain[i].update();
-		
-		if (terrain[i].hits(player) && terrain[i].flipped) {
-			player.topLimit = terrain[i].terrainHeight;
-		} else if (terrain[i].hits(player) && terrain[i].flipped === false) {
-				player.bottomLimit = height - (terrain[i].terrainHeight) - player.playerHeight;
-		} else {
-				player.topLimit = -100;
-				player.bottomLimit = height + this.playerHeight;
-		}
+		setLimit(terrain[i]);
+		deleteTerrain(terrain[i]);
 
-		if (terrain[i].offScreen()) terrain.shift();
 		if (player.isDead(terrain[i])) {
 			gameOver();
+			player.showFinalScore();
+		} else {
+			player.showScore();
 		}
 	}
 	
@@ -85,26 +80,38 @@ function draw() {
 	player.show();
 }
 
+function deleteTerrain(targetTerrain) {
+	if (targetTerrain.offScreen()) terrain.shift();
+}
+
+function setLimit(targetTerrain) {
+	if (targetTerrain.hits(player) && targetTerrain.flipped) {
+		player.topLimit = targetTerrain.terrainHeight;
+	} else if (targetTerrain.hits(player) && targetTerrain.flipped === false) {
+		player.bottomLimit = height - (targetTerrain.terrainHeight) - player.playerHeight;
+	} else {
+		player.topLimit = -100;
+		player.bottomLimit = height + this.playerHeight;
+	}
+}
+
 function gameOver() {
 	terrain.forEach(ground => (ground.speed = 0));
 	textSize(64);
 	textAlign(CENTER, CENTER);
 	text('GAMEOVER', width / 2, height / 2);
+
 	textSize(30);
 	text('Press "R" to restart', width / 2, height / 1.75);
 	isOver = true;
 	song.pause();
 }
 
-function pause() {
-	if (paused) terrain.forEach(ground => (ground.speed = 0));
-}
 
 function resetGame() {
 	terrain = [];
 	isOver = false;
 	bgX = 0;
-	centerCanvas();
 	player = new Player();
 	let firstTerrain = new Terrain(false);
 	firstTerrain.x = 400;
