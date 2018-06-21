@@ -31,14 +31,10 @@ function preload() {
 // CREDIT TO EFFECTS GRINDER FOR SFX
 function setup() {
 	cnv = createCanvas(1080, 720);
-	centerCanvas();
-	player = new Player();
-	let firstTerrain = new Terrain(false);
-	firstTerrain.x = 400;
-	firstTerrain.terrainWidth = 1100; 
-	terrain.push(firstTerrain);
-	song.jump(0);
-	song.setVolume(0.5);
+	resetGame();
+	startBtn = createButton('Start Game');
+	startBtn.mousePressed(resetGame);
+
 }
 
 function windowResized() {
@@ -62,7 +58,6 @@ function draw() {
 			bgX = 0;
 		}
 	}  
-	
 	
 	for (let i = terrain.length - 1; i >= 0; i--) {
 		terrain[i].show();
@@ -101,11 +96,22 @@ function gameOver() {
 	song.pause();
 }
 
+function pause() {
+	if (paused) terrain.forEach(ground => (ground.speed = 0));
+}
+
 function resetGame() {
 	terrain = [];
 	isOver = false;
 	bgX = 0;
-	setup();
+	centerCanvas();
+	player = new Player();
+	let firstTerrain = new Terrain(false);
+	firstTerrain.x = 400;
+	firstTerrain.terrainWidth = 1100;
+	terrain.push(firstTerrain);
+	song.jump(0);
+	song.setVolume(0.5);
 }
 
 function inRange(currentTerrain) {
