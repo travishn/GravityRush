@@ -13,6 +13,7 @@ let terrainImg;
 let song;
 let jump;
 let reverse;
+let cnv;
 
 function preload() {
 	bgImg = loadImage('graphics/retro_background.jpg');
@@ -29,7 +30,8 @@ function preload() {
 
 // CREDIT TO EFFECTS GRINDER FOR SFX
 function setup() {
-	createCanvas(1080, 700);
+	cnv = createCanvas(1080, 720);
+	centerCanvas();
 	player = new Player();
 	let firstTerrain = new Terrain(false);
 	firstTerrain.x = 400;
@@ -37,6 +39,16 @@ function setup() {
 	terrain.push(firstTerrain);
 	song.jump(0);
 	song.setVolume(0.5);
+}
+
+function windowResized() {
+	centerCanvas();
+}
+
+function centerCanvas() {
+	var x = (windowWidth - width) / 2;
+	var y = (windowHeight - height) / 2;
+	cnv.position(x, y);
 }
 
 function draw() {
@@ -59,31 +71,34 @@ function draw() {
 		if (terrain[i].hits(player) && terrain[i].flipped) {
 			player.topLimit = terrain[i].terrainHeight;
 		} else if (terrain[i].hits(player) && terrain[i].flipped === false) {
-			player.bottomLimit = height - (terrain[i].terrainHeight) - player.playerHeight;
+				player.bottomLimit = height - (terrain[i].terrainHeight) - player.playerHeight;
 		} else {
-			player.topLimit = -100;
-			player.bottomLimit = height + this.playerHeight;
+				player.topLimit = -100;
+				player.bottomLimit = height + this.playerHeight;
 		}
 
 		if (terrain[i].offScreen()) terrain.shift();
+		if (player.isDead(terrain[i])) {
+			gameOver();
+		}
 	}
-
+	
 	option = options[Math.floor(Math.random()*options.length)];
-	if (!isOver && frameCount % 65 === 0) terrain.push(new Terrain(option));
+	if (!isOver && inRange(terrain[terrain.length-1])) terrain.push(new Terrain(option));
 
 	player.update();
 	player.show();
+}
 
-	if (player.isDead()) {
-		terrain.forEach(ground => (ground.speed = 0));
-		textSize(64);
-		textAlign(CENTER, CENTER);
-		text('GAMEOVER', width/2, height/2);
-		textSize(30);
-		text('Press "R" to restart', width/2, height/1.75);
-		isOver = true;
-		song.pause();
-	}
+function gameOver() {
+	terrain.forEach(ground => (ground.speed = 0));
+	textSize(64);
+	textAlign(CENTER, CENTER);
+	text('GAMEOVER', width / 2, height / 2);
+	textSize(30);
+	text('Press "R" to restart', width / 2, height / 1.75);
+	isOver = true;
+	song.pause();
 }
 
 function resetGame() {
@@ -91,6 +106,10 @@ function resetGame() {
 	isOver = false;
 	bgX = 0;
 	setup();
+}
+
+function inRange(currentTerrain) {
+	return (currentTerrain.x + currentTerrain.terrainWidth < random(600, 800));
 }
 
 function keyPressed() {

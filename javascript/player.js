@@ -61,7 +61,9 @@ class Player {
     this.midJump = false;
   }
 
-  isDead() {
+  isDead(terrain) {
+    // if (terrain.flipped) return player.y < terrain.terrainHeight;
+    // return (player.y + player.playerHeight) > height - terrain.terrainHeight + 20;
     return (player.y < 0 || player.y > height - player.playerHeight);
   }
 }
