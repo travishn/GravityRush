@@ -1,5 +1,6 @@
 let player;
 let paused = false;
+let isOver = false;
 let bgX = 0;
 let terrain = [];
 const parallax = 0.8;
@@ -9,7 +10,9 @@ let playerImg;
 let playerImg2;
 let bgImg;
 let terrainImg;
-let isOver = false;
+let song;
+let jump;
+let reverse;
 
 function preload() {
 	bgImg = loadImage('graphics/retro_background.jpg');
@@ -19,8 +22,12 @@ function preload() {
 	playerImg4 = loadImage('graphics/player_walk4.png');
 	terrainImg = loadImage('graphics/grassMid.png');
 	terrainImg2 = loadImage('graphics/grassMid2.png');
+	song = loadSound('audio/Galaxy.mp3');
+	jump = loadSound('audio/jumpTrim.mov');
+	reverse = loadSound('audio/reversePolarityTrim.mov');
 }
 
+// CREDIT TO EFFECTS GRINDER FOR SFX
 function setup() {
 	createCanvas(1080, 700);
 	player = new Player();
@@ -28,11 +35,13 @@ function setup() {
 	firstTerrain.x = 400;
 	firstTerrain.terrainWidth = 1100; 
 	terrain.push(firstTerrain);
+	song.jump(0);
+	song.setVolume(0.05);
 }
 
 function draw() {
 	background(0);
-	image(bgImg, bgX, 0, bgImg.width, height);
+	// image(bgImg, bgX, 0, bgImg.width, height);
 	bgX -= terrain[terrain.length-1].speed * 0.8;
 
 	if (bgX <= -bgImg.width + width) {
@@ -73,6 +82,7 @@ function draw() {
 		textSize(30);
 		text('Press "R" to restart', width/2, height/1.75);
 		isOver = true;
+		song.pause();
 	}
 }
 
@@ -84,7 +94,17 @@ function resetGame() {
 }
 
 function keyPressed() {
-	if (keyCode === 71) player.reversePolarity();
-	if (key === ' ') player.jump();
+	if (keyCode === 71) {
+		player.reversePolarity();
+		reverse.play();
+		reverse.setVolume(0.05);
+	}
+
+	if (key === ' ') {
+		player.jump();
+		jump.play();
+		jump.setVolume(0.05);
+	}
+
 	if (keyCode === 82) resetGame();
 }
