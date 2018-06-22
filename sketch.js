@@ -15,6 +15,7 @@ let jump;
 let reverse;
 let cnv;
 let muted = false;
+let paused = false;
 
 function preload() {
 	bgImg = loadImage('graphics/retro_background.jpg');
@@ -34,12 +35,7 @@ function setup() {
 	cnv = createCanvas(1080, window.innerHeight);
 	image(bgImg, bgX, 0, bgImg.width, height);
 	cnv.parent('canvas');
-	// centerCanvas();
-
 	resetGame();
-	// startBtn = createButton('Start Game');
-	// startBtn.mousePressed(startSketch);
-
 	noLoop();
 }
 
@@ -53,8 +49,8 @@ function startSketch() {
 function mute() {
 	if (muted) {
 		muted = false;
-		jump.setVolume(0.3);
-		reverse.setVolume(0.4);
+		jump.setVolume(0.05);
+		reverse.setVolume(0.05);
 		song.setVolume(0.5);
 	} else {
 		muted = true;
@@ -65,7 +61,7 @@ function mute() {
 }
 
 function windowResized() {
-	// centerCanvas();
+	centerCanvas();
 }
 
 function centerCanvas() {
@@ -139,6 +135,19 @@ function gameOver() {
 	song.pause();
 }
 
+function pause() {
+	if (paused) {
+		paused = false;
+		loop();
+	} else {
+		paused = true;
+		noLoop();
+		textSize(64);
+		textAlign(CENTER, CENTER);
+		text('PAUSED', width / 2, height / 2);
+	}
+}
+
 
 function resetGame() {
 	terrain = [];
@@ -153,8 +162,8 @@ function resetGame() {
 	if (started) {
 		song.jump(0);
 		song.setVolume(0.5);
-		reverse.setVolume(0.4);
-		jump.setVolume(0.3);
+		reverse.setVolume(0.05);
+		jump.setVolume(0.05);
 	}
 }
 
@@ -166,16 +175,12 @@ function keyPressed() {
 	if (keyCode === 71) {
 		player.reversePolarity();
 		reverse.play();
-		// reverse.setVolume(0.4);
 	}
-
-	if (key === ' ') {
+	else if (key === ' ') {
 		player.jump();
 		jump.play();
-		// jump.setVolume(0.3);
 	}
-
-	if (keyCode === 82) resetGame();
-
-	if (keyCode === 77) mute();
+	else if (keyCode === 82) resetGame();
+	else if (keyCode === 77) mute();
+	else if (keyCode === 80) pause();
 }

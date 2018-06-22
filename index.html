@@ -102,11 +102,11 @@
 		}
 
 		#start-btn {
-			width: 30%;
-			padding: 0.3em;
+			width: 40%;
+			padding: 0.4em;
  			background: #FF638C;
 			cursor: pointer;
-			border-radius: 25px;
+			border-radius: 25px 25px;
 			align-self: center;
 		}
 
@@ -116,14 +116,19 @@
 
 		#mute-btn {
 			position: absolute;
+			top: 3%;
+			left: 2%;
 			display: inline;
+			cursor: pointer;
+			font-weight: bold;
+			font-size: 20px;
 		}
 	</style>
 </head>
 <body>
 	<main id="canvas-container">
 		<div id="canvas">
-			<p id="mute-btn">Mute Button</p>
+			<p id="mute-btn" onClick="mute()">Mute</p>
 		</div>
 
 		<aside id="title-container">
@@ -137,7 +142,9 @@
 
 			<h2 id="instruction-container">How to Play</h2>
 			<p>Press G to Reverse Gravity</p>
-			<p id="last-direction">Press SpaceBar to Jump</p>
+			<p>Press SpaceBar to Jump</p>
+			<p>Press M to Mute</p>
+			<p id="last-direction">Press R to Restart</p>
 
 			<p id="start-btn" onclick="startSketch()">Start Game</p>
 
