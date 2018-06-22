@@ -28,11 +28,6 @@
 	<script src="./javascript/terrain.js"></script>
 
 	<style>
-		@font-face {
-			font-family: "space-font";
- 			src: url("C:/Users/Travis/Downloads/sf-zero-gravity/TrueType/SFZeroGravity.ttf");	
-		}
-
 		body { 
 			margin: 0; 
 			padding: 0; 
@@ -46,11 +41,6 @@
 			/* margin: auto;  */
 		}
 		
-		
-		#title-container {
-			display: flex;
-		}
-
 		#canvas-container {
 			display: flex;
 			justify-content: space-between;
@@ -62,6 +52,9 @@
 			width: 100%;
 			text-align: center;
 			margin: 1em;
+			justify-content: center;
+			padding-left: 20px;
+			padding-right: 20px;
 		}
 
 		#title-text {
@@ -96,7 +89,7 @@
 		#social-media-links {
 			display: flex;
 			justify-content: center;
-			padding-top: 1em;
+			padding-top: 2em;
 		}
 
 		.logo {
@@ -109,11 +102,16 @@
 		}
 
 		#start-btn {
-			padding-top: 2em;
+			width: 30%;
+			padding: 0.3em;
+ 			background: #FF638C;
 			cursor: pointer;
+			border-radius: 25px;
+			align-self: center;
 		}
 
-		#canvas {
+		#last-direction {
+			padding-bottom: 1.8em;
 		}
 
 		#mute-btn {
@@ -139,10 +137,12 @@
 
 			<h2 id="instruction-container">How to Play</h2>
 			<p>Press G to Reverse Gravity</p>
-			<p>Press SpaceBar to Jump</p>
+			<p id="last-direction">Press SpaceBar to Jump</p>
+
+			<p id="start-btn" onclick="startSketch()">Start Game</p>
 
 			<div id="social-media-links">
-				<a href="github.com/travishn">
+				<a href="https://github.com/travishn">
 					<img class="logo" src="graphics/github.png"/>
 				</a>
 
@@ -151,7 +151,6 @@
 				</a>
 			</div>
 
-			<p id="start-btn" onclick="startSketch()">Start Game</p>
 		</aside>
 
 	</main>
