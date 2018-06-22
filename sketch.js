@@ -148,7 +148,6 @@ function pause() {
 	}
 }
 
-
 function resetGame() {
 	terrain = [];
 	isOver = false;
