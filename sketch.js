@@ -14,6 +14,7 @@ let song;
 let jump;
 let reverse;
 let cnv;
+let muted = false;
 
 function preload() {
 	bgImg = loadImage('graphics/retro_background.jpg');
