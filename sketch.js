@@ -30,18 +30,19 @@ function preload() {
 
 // CREDIT TO EFFECTS GRINDER FOR SFX
 function setup() {
-	cnv = createCanvas(1080, 720);
-	cnv.parent('canvas-container');
-	centerCanvas();
+	cnv = createCanvas(1080, window.innerHeight);
+	image(bgImg, bgX, 0, bgImg.width, height);
+	cnv.parent('canvas');
+	// centerCanvas();
 
 	resetGame();
-	startBtn = createButton('Start Game');
-	startBtn.mousePressed(start);
+	// startBtn = createButton('Start Game');
+	// startBtn.mousePressed(startSketch);
 
 	noLoop();
 }
 
-function start() {
+function startSketch() {
 	started = true;
 	song.jump(0);
 	song.setVolume(0.5);
@@ -49,7 +50,7 @@ function start() {
 }
 
 function windowResized() {
-	centerCanvas();
+	// centerCanvas();
 }
 
 function centerCanvas() {

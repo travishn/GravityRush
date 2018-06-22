@@ -12,6 +12,8 @@
 	</script>
 
 	<!-- <link rel="stylesheet" type="text/css" href="main.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,38 +28,91 @@
 	<script src="./javascript/terrain.js"></script>
 
 	<style>
+		@font-face {
+			font-family: "space-font";
+ 			src: url("C:/Users/Travis/Downloads/sf-zero-gravity/TrueType/SFZeroGravity.ttf");	
+		}
+
 		body { 
 			margin: 0; 
 			padding: 0; 
 			overflow: hidden; 
+ 			font-family: 'Audiowide', cursive;
+			color: white;
+ 			background: black;
 		}
 
 		canvas { 
-			margin: auto; 
+			/* margin: auto;  */
 		}
 		
-		/* .modal {
-			display: none;
+		
+		#title-container {
+			display: flex;
 		}
 
-		.modal-screen {
-			position: fixed;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			z-index: 2;
-			background: rgba(0, 0, 0, 0.8);
-		} */
+		#canvas-container {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		#title-container {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			text-align: center;
+			margin: 1em;
+		}
+
+		#title-text {
+			margin-bottom: 0;
+			 color: #FF638C;
+			 font-size: 30px;
+		}
+
+		#instruction-container {
+			margin-top: 0;
+			margin-bottom: 0;
+			/* color: palevioletred; */
+ 			color: #FF638C;
+		}
+
+		p {
+			margin: 0;
+			font-family: 'Raleway', sans-serif;
+			line-height: 1.5;
+			/* font-weight: lighter; */
+			text-align: center;
+		}
+
+		h2 {
+			margin: 0;
+			padding-bottom: 0.5em;
+			padding-top: 0.5em;
+		}
 	</style>
 </head>
 <body>
-	<div id="canvas-container">
+	<main id="canvas-container">
+		<div id="canvas">
+		</div>
 
-	</div>
-	<div id="modal is-open">
-		<h1>Welcome</h1>
-		<div class="modal-screen js-modal-close"></div>
-	</div>
+		<aside id="title-container">
+			<h1 id="title-text">Gravity Rush</h1>
+
+			<h2 id="instruction-container">Instructions</h2>
+			<p>You have the ability to reverse the polarity of the world and manipulate your surroundings. 
+				Use your gravitaitonal powers and jumping abilities to traverse over space terrains and 
+				avoid getting sucked into nothingness.
+			</p>
+
+			<h2 id="instruction-container">How to Play</h2>
+			<p>Press G to Reverse Gravity</p>
+			<p>Press SpaceBar to Jump</p>
+
+			<p id="startBtn" onclick="startSketch()">Start Game</p>
+		</aside>
+
+	</main>
 </body>
 </html>
