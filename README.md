@@ -5,6 +5,8 @@
 # Description
 Gravity Rush is an endless side-scrolling video game inspired by Gravity Guy, where players have the ability to reverse the polarity of the world to manipulate their surroundings to survive. The goal of the game is to accrue as many points as possible before dying. As time progresses, the side-scrolling velocity will increase making it more difficult to survive.
 
+![game](graphics/gravitysplash.png)
+
 # Project Design
 
 Gravity Rush was designed and created over a span of 4 days. Prior to being created, a list of minimal viable products (MVPs) were composed in order to ensure a swift developmental process. 
@@ -58,8 +60,8 @@ In addition to the p5 library files, there will be three scripts involved in thi
 }
 ```
 
-## Future Plans
-* Implement terrain velocity increase as time progresses
-* Create other obstacles that player has to avoid
-* Add more retro styling to game text
+## Future Additions
+* Develop algorithm that adjusts terrain velocity properly as time progresses
 * Implement an enemy AI that chases after the player
+* Create obstacles that can block the player
+* Add more retro styling to game text
