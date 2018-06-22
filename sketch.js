@@ -50,6 +50,20 @@ function startSketch() {
 	loop();
 }
 
+function mute() {
+	if (muted) {
+		muted = false;
+		jump.setVolume(0.3);
+		reverse.setVolume(0.4);
+		song.setVolume(0.5);
+	} else {
+		muted = true;
+		song.setVolume(0);
+		jump.setVolume(0);
+		reverse.setVolume(0);
+	}
+}
+
 function windowResized() {
 	// centerCanvas();
 }
@@ -139,6 +153,8 @@ function resetGame() {
 	if (started) {
 		song.jump(0);
 		song.setVolume(0.5);
+		reverse.setVolume(0.4);
+		jump.setVolume(0.3);
 	}
 }
 
@@ -150,14 +166,16 @@ function keyPressed() {
 	if (keyCode === 71) {
 		player.reversePolarity();
 		reverse.play();
-		reverse.setVolume(0.4);
+		// reverse.setVolume(0.4);
 	}
 
 	if (key === ' ') {
 		player.jump();
 		jump.play();
-		jump.setVolume(0.3);
+		// jump.setVolume(0.3);
 	}
 
 	if (keyCode === 82) resetGame();
+
+	if (keyCode === 77) mute();
 }
