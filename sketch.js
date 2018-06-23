@@ -42,15 +42,18 @@ function setup() {
 function startSketch() {
 	started = true;
 	song.jump(0);
+	jump.setVolume(0.2);
+	reverse.setVolume(0.3);
 	song.setVolume(0.5);
+
 	loop();
 }
 
 function mute() {
 	if (muted) {
 		muted = false;
-		jump.setVolume(0.05);
-		reverse.setVolume(0.05);
+		jump.setVolume(0.2);
+		reverse.setVolume(0.3);
 		song.setVolume(0.5);
 	} else {
 		muted = true;
@@ -161,8 +164,8 @@ function resetGame() {
 	if (started) {
 		song.jump(0);
 		song.setVolume(0.5);
-		reverse.setVolume(0.05);
-		jump.setVolume(0.05);
+		reverse.setVolume(0.2);
+		jump.setVolume(0.2);
 	}
 }
 
