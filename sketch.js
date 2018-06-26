@@ -175,10 +175,12 @@ function inRange(currentTerrain) {
 
 function keyPressed() {
 	if (keyCode === 71) {
+		if (isOver) return;
 		player.reversePolarity();
 		reverse.play();
 	}
 	else if (key === ' ') {
+		if (isOver) return;
 		player.jump();
 		jump.play();
 	}
