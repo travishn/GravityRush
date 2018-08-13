@@ -74,11 +74,11 @@ const populateDOM = () => {
 
 const waitForElement = (elementId, callBack) => {
   setTimeout(function () {
-    const canvas = document.getElementById(elementId);
-    if (canvas) {
-      setTimeout(callBack(), 1000);
+    const loading = document.getElementById(elementId);
+    if (!loading) {
+      callBack();
     } else {
       waitForElement(elementId, callBack);
     }
-  }, 1100);
+  }, 500);
 };

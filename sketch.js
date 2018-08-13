@@ -56,9 +56,9 @@ function loadElement(filename, type) {
 function setup() {
 	cnv = createCanvas(window.innerWidth/1.3, window.innerHeight);
 	image(bgImg, bgX, 0, bgImg.width, height);
-	cnv.parent('canvas');
 	resetGame();
 	noLoop();
+	cnv.parent('canvas');
 }
 
 function startSketch() {
