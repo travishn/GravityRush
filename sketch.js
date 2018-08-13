@@ -86,7 +86,7 @@ function mute() {
 }
 
 function windowResized() {
-	centerCanvas();
+	// resizeCanvas(windowWidth, windowHeight);
 }
 
 function centerCanvas() {
