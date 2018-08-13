@@ -80,5 +80,5 @@ const waitForElement = (elementId, callBack) => {
     } else {
       waitForElement(elementId, callBack);
     }
-  }, 500);
+  }, 100);
 };
