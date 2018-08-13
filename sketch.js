@@ -2,6 +2,7 @@ let player;
 var started = false;
 let isOver = false;
 let bgX = 0;
+let counter = 0;
 let terrain = [];
 const parallax = 0.8;
 let options = [true, false];
@@ -31,6 +32,27 @@ function preload() {
 }
 
 // CREDIT TO EFFECTS GRINDER FOR SFX
+function loadElement(filename, type) {
+	if (type === 'sound') {
+		loadSound(filename, fileLoaded);
+	} else if (type === 'image') {
+		loadImage(filename, fileLoaded);
+	}
+
+	function fileLoaded(media) {
+		counter++;
+		if (counter === totalFiles) {
+			loading = false;
+		}
+
+		if (type === 'sound') {
+			songs.push(media);
+		} else if (type === 'image') {
+			images.push(media);
+		}
+	}
+}
+
 function setup() {
 	cnv = createCanvas(window.innerWidth/1.3, window.innerHeight);
 	image(bgImg, bgX, 0, bgImg.width, height);

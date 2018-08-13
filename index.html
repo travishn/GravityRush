@@ -26,6 +26,7 @@
 	<script src="sketch.js"></script>
 	<script src="./javascript/player.js"></script>
 	<script src="./javascript/terrain.js"></script>
+	<script src="./javascript/direction.js"></script>
 
 	<style>
 
@@ -70,7 +71,7 @@
 			 font-size: 38px;
 		}
 
-		#instruction-container {
+		.instruction-container {
 			margin-top: 0;
 			margin-bottom: 0;
 			color: #FF638C;
@@ -129,24 +130,74 @@
 			font-weight: bold;
 			font-size: 20px;
 		}
+		
+		.loading {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+		.loading-bar {
+			display: inline-block;
+			width: 4px;
+			height: 25px;
+			border-radius: 4px;
+			animation: loading 1s ease-in-out infinite;
+		}
+		.loading-bar:nth-child(1) {
+			background-color: #FF638C;
+			animation-delay: 0;
+		}
+		.loading-bar:nth-child(2) {
+			background-color: #FF638C;
+			animation-delay: 0.09s;
+		}
+		.loading-bar:nth-child(3) {
+			background-color: #FF638C;
+			animation-delay: .18s;
+		}
+		.loading-bar:nth-child(4) {
+			background-color: #FF638C;
+			animation-delay: .27s;
+		}
+
+		@keyframes loading {
+			0% {
+				transform: scale(1);
+			}
+			20% {
+				transform: scale(1, 2.2);
+			}
+			40% {
+				transform: scale(1);
+			}
+		}
 	</style>
 </head>
-<body>
+<body onload="waitForElement('canvas', populateDOM)">
 	<main id="canvas-container">
+		<div id="p5_loading" class="loadingclass">
+			<div class="loading">
+				<div class="loading-bar"></div>
+				<div class="loading-bar"></div>
+				<div class="loading-bar"></div>
+				<div class="loading-bar"></div>
+			</div>
+		</div>
+
 		<div id="canvas">
 			<p id="mute-btn" onClick="mute()">Mute</p>
 		</div>
 
 		<aside id="title-container">
-			<h1 id="title-text">Gravity Rush</h1>
+			<!-- <h1 id="title-text">Gravity Rush</h1>
 
-			<h2 id="instruction-container">Instructions</h2>
+			<h2 class="instruction-container">Instructions</h2>
 			<p>You have the ability to reverse the polarity of the world and manipulate your surroundings. 
 				Use your gravitaitonal powers and jumping abilities to traverse over space terrains and 
 				avoid getting sucked into nothingness.
 			</p>
 
-			<h2 id="instruction-container">How to Play</h2>
+			<h2 class="instruction-container">How to Play</h2>
 			<p>Press G to Reverse Gravity</p>
 			<p>Press SpaceBar to Jump</p>
 			<p>Press M to Mute</p>
@@ -163,7 +214,7 @@
 				<a href="https://www.linkedin.com/in/travishn/">
 					<img class="logo image-right" src ="graphics/linkedin.png"/>
 				</a>
-			</div>
+			</div> -->
 
 		</aside>
 
