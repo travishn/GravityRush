@@ -32,7 +32,7 @@ function preload() {
 
 // CREDIT TO EFFECTS GRINDER FOR SFX
 function setup() {
-	cnv = createCanvas(1080, window.innerHeight);
+	cnv = createCanvas(window.innerWidth/1.3, window.innerHeight);
 	image(bgImg, bgX, 0, bgImg.width, height);
 	cnv.parent('canvas');
 	resetGame();
@@ -149,6 +149,8 @@ function pause() {
 		textAlign(CENTER, CENTER);
 		text('PAUSED', width / 2, height / 2);
 	}
+
+	mute();
 }
 
 function resetGame() {
